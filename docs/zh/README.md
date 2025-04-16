@@ -26,7 +26,7 @@ footer: CC-BY-4.0 协议 | 版权所有 © 四川大学计算机学院
 
 ## 一行代码，轻松安装
 ```shell
-pip install imdlbenco
+pip install ForensicHub
 ```
 
 获取更多详情，请查阅[指南](/guide/quickstart/install.md).

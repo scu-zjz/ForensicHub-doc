@@ -93,7 +93,7 @@ In addition to the format to be noted, to improve the speed of training and test
 ## Preprocessing for High-Resolution Images
 Some datasets have very high resolutions, such as the NIST16 and compRAISE datasets in the CAT-Protocol, which contain 4000x4000 images. These datasets, if directly read during training, will bring a very high I/O burden. Especially when used as training datasets.
 
-So we particularly recommend resizing the images to a smaller size in advance when using these datasets, such as reducing to a long side equal to 1024 while maintaining the aspect ratio. Otherwise, the training speed may be greatly slowed down, please refer to [IMDL-BenCo issue #40](https://github.com/scu-zjz/IMDLBenCo/issues/40).
+So we particularly recommend resizing the images to a smaller size in advance when using these datasets, such as reducing to a long side equal to 1024 while maintaining the aspect ratio. Otherwise, the training speed may be greatly slowed down, please refer to [IMDL-BenCo issue #40](https://github.com/scu-zjz/ForensicHub/issues/40).
 
 We provide a Resize code based on a thread pool here, which can efficiently convert all images in a path to the desired resolution through multi-threading:
 ```python

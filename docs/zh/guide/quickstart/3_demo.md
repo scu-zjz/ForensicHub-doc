@@ -1,7 +1,7 @@
 # 案例三：使用benco init实现你自己的模型
 我们认为学习最快的方式就是“Learn by Doing”（边做边学），所以通过几个案例来帮助使用者快速上手。
 
-总的来说IMDL-BenCo通过类似`git`、`conda`这样的命令行调用方式帮助你快速完成图像篡改检测科研项目的开发。如果你学过vue等前端技术，那按照vue-cli来理解IMDLBenCo的设计范式会非常轻松。
+总的来说IMDL-BenCo通过类似`git`、`conda`这样的命令行调用方式帮助你快速完成图像篡改检测科研项目的开发。如果你学过vue等前端技术，那按照vue-cli来理解ForensicHub的设计范式会非常轻松。
 
 无论如何，请先参考[安装](./install.md)完成IMDL-BenCo的安装。
 
@@ -31,7 +31,7 @@ benco init
 .
 ├── balanced_dataset.json       # 存放按照Protocol-CAT组织的数据集路径
 ├── mymodel.py                  # 核心的模型实现
-├── README-IMDLBenCo.md         # 一个简单的readme
+├── README-ForensicHub.md         # 一个简单的readme
 ├── test_datasets.json          # 存放测试用的数据集路径
 ├── test_mymodel.sh             # 传参运行测试的shell脚本
 ├── test.py                     # 测试脚本的实际Python代码
@@ -42,18 +42,18 @@ benco init
 ```
 
 ::: warning 特别注意
-如果已经生成过脚本，并且做出一定修改后，请一定**小心二次调用**`benco init`，IMDLBenCo会在询问后逐一覆盖文件，如果误操作可能导致丢失你已有的修改，务必小心。推荐使用git版本管理来避免该操作导致丢失已有代码。
+如果已经生成过脚本，并且做出一定修改后，请一定**小心二次调用**`benco init`，ForensicHub会在询问后逐一覆盖文件，如果误操作可能导致丢失你已有的修改，务必小心。推荐使用git版本管理来避免该操作导致丢失已有代码。
 :::
 
 
 ### 模型文件设计范式
-IMDLBenCo需要按照一定格式组织模型文件，以保证入口可以和`DataLoader`、出口可以和后续的`Evaluator`和`Visualize tools`对齐。
+ForensicHub需要按照一定格式组织模型文件，以保证入口可以和`DataLoader`、出口可以和后续的`Evaluator`和`Visualize tools`对齐。
 
-执行`benco init`后默认以最简单的**单层卷积**生成一个模型在`mymodel.py`中，你可以先通过[Github中的mymodel.py链接](https://github.com/scu-zjz/IMDLBenCo/blob/main/IMDLBenCo/statics/base/mymodel.py)快速查看它的内容。
+执行`benco init`后默认以最简单的**单层卷积**生成一个模型在`mymodel.py`中，你可以先通过[Github中的mymodel.py链接](https://github.com/scu-zjz/ForensicHub/blob/main/ForensicHub/statics/base/mymodel.py)快速查看它的内容。
 
 
 ```python
-from IMDLBenCo.registry import MODELS
+from ForensicHub.registry import MODELS
 import torch.nn as nn
 import torch
 
@@ -132,21 +132,21 @@ if __name__ == "__main__":
 ```
 
 
-**按照代码从前到后的顺序介绍，IMDLBenCo的model文件需要满足以下设计才能正常运行：**
+**按照代码从前到后的顺序介绍，ForensicHub的model文件需要满足以下设计才能正常运行：**
 - 第5行：`@MODELS.register_module()`
-  - 基于注册机制注册该模型到IMDLBenCo的全局注册器中，便于其他脚本通过字符串快速调用该类。
+  - 基于注册机制注册该模型到ForensicHub的全局注册器中，便于其他脚本通过字符串快速调用该类。
   - 如果对注册机制不熟悉，一句话解释就是：**自动维护了一个从字符串到对应类的字典映射**，便于“自由地”传递参数。
-  - 实际使用时，通过向启动训练的shell脚本的`--model`函数传入注册过的“类名同名字符串”即可使得框架加载对应的自定义or框架内已有模型。具体请参考[此链接](https://github.com/scu-zjz/IMDLBenCo/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/IMDLBenCo/statics/model_zoo/runs/demo_train_mvss.sh#L10)。
+  - 实际使用时，通过向启动训练的shell脚本的`--model`函数传入注册过的“类名同名字符串”即可使得框架加载对应的自定义or框架内已有模型。具体请参考[此链接](https://github.com/scu-zjz/ForensicHub/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/ForensicHub/statics/model_zoo/runs/demo_train_mvss.sh#L10)。
 - 第29行、第37行：**损失函数必须定义在`__init__()`或者`forward()`函数中**
 - 第31行：定义forward函数时`def forward(self, image, mask, label, *args, **kwargs):`
   - 必须要带Python函数解包所需的`*args, **kwargs`，以接收未使用的参数。
     - 如果你不熟悉请参考[Python官方文档-4.8.2. Keyword Arguments](https://docs.python.org/3/tutorial/controlflow.html#keyword-arguments)，[Python官方文档中文版-4.8.2 关键字参数](https://docs.python.org/zh-cn/3/tutorial/controlflow.html#keyword-arguments)
-  - 形参变量名必须与[`abstract_dataset.py`](https://github.com/scu-zjz/IMDLBenCo/blob/main/IMDLBenCo/datasets/abstract_dataset.py)中返回的字典`data_dict`包含的字段名完全一致。默认字段如下表所示：
+  - 形参变量名必须与[`abstract_dataset.py`](https://github.com/scu-zjz/ForensicHub/blob/main/ForensicHub/datasets/abstract_dataset.py)中返回的字典`data_dict`包含的字段名完全一致。默认字段如下表所示：
     - |Key名|含义|类型|
       |:-:|-|:-:|
       |image|输入的原始图片|Tensor(B,3,H,W)|
       |mask|预测目标的掩码|Tensor(B,1,H,W)|
-      |edge_mask|根据mask进行[腐蚀（erosion）与膨胀（dilation）](https://docs.opencv.org/3.4/db/df6/tutorial_erosion_dilatation.html)后获得的仅有边界为白色的mask，以供各种需要边界损失函数的模型使用。为了减轻计算开销，必须在训练`shell`中传入`--edge_mask_width 7`这样的参数后，对应的dataloader才会返回这个键值对供模型的`forward()`函数取用，参考`IML-ViT`的[shell](https://github.com/scu-zjz/IMDLBenCo/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/IMDLBenCo/statics/model_zoo/runs/demo_train_iml_vit.sh#L22)和[模型forward函数](https://github.com/scu-zjz/IMDLBenCo/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/IMDLBenCo/model_zoo/iml_vit/iml_vit.py#L125)函数。<br>如果不需要边界mask来计算后续损失，则既不需要在shell中传入，也不需要在模型的`forward()`函数形参中准备名为`edge_mask`的形参，参考`ObjectFormer`的[shell](https://github.com/scu-zjz/IMDLBenCo/blob/main/IMDLBenCo/statics/model_zoo/runs/demo_train_object_former.sh)和[模型forward函数](https://github.com/scu-zjz/IMDLBenCo/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/IMDLBenCo/model_zoo/object_former/object_former.py#L285)。|Tensor(B,1,H,W)|
+      |edge_mask|根据mask进行[腐蚀（erosion）与膨胀（dilation）](https://docs.opencv.org/3.4/db/df6/tutorial_erosion_dilatation.html)后获得的仅有边界为白色的mask，以供各种需要边界损失函数的模型使用。为了减轻计算开销，必须在训练`shell`中传入`--edge_mask_width 7`这样的参数后，对应的dataloader才会返回这个键值对供模型的`forward()`函数取用，参考`IML-ViT`的[shell](https://github.com/scu-zjz/ForensicHub/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/ForensicHub/statics/model_zoo/runs/demo_train_iml_vit.sh#L22)和[模型forward函数](https://github.com/scu-zjz/ForensicHub/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/ForensicHub/model_zoo/iml_vit/iml_vit.py#L125)函数。<br>如果不需要边界mask来计算后续损失，则既不需要在shell中传入，也不需要在模型的`forward()`函数形参中准备名为`edge_mask`的形参，参考`ObjectFormer`的[shell](https://github.com/scu-zjz/ForensicHub/blob/main/ForensicHub/statics/model_zoo/runs/demo_train_object_former.sh)和[模型forward函数](https://github.com/scu-zjz/ForensicHub/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/ForensicHub/model_zoo/object_former/object_former.py#L285)。|Tensor(B,1,H,W)|
       |lable|Image-level预测的零一标签|Tensor(B,1)|
       |shape|经过padding或resize后，传入模型训练的图片的形状|Tensor(B,2), 两个维度各一个值，分别代表H和W|
       |original_shape|最开始读取输入的图片的形状|Tensor(B,2), 两个维度各一个值，分别代表H和W|
@@ -154,8 +154,8 @@ if __name__ == "__main__":
       |shape_mask|在padding的情况下，仅计算该mask内为1的全部像素作为最终指标，1默认为和原图一样大的方形区域|Tensor(B,1,H,W)|
     - 对于不同的任务，可以按需取用这些字段输入到模型中使用。
     - 此外，对于CAT-Net需要的Jpeg相关的图片素材，我们设计了后处理函数`post_func`来根据已有的字段，生成更多需要的内容，此时也需要保证对应的forward函数的字段对齐。**有类似需求的自定义模型也可以使用这个范式来在dataloader引入其他模态的信息。** 以下是CAT-Net的案例：
-      - [`cat_net_post_function`的Github链接](https://github.com/scu-zjz/IMDLBenCo/blob/c2d6dc03eab3f33461690d5026b43afdac22f70c/IMDLBenCo/model_zoo/cat_net/cat_net_post_function.py#L7-L10)，可以看到包含额外的`DCT_coef`和`q_tables`两个字段为模型输入额外的模态
-      - [`cat_net_model`的Github链接](https://github.com/scu-zjz/IMDLBenCo/blob/c2d6dc03eab3f33461690d5026b43afdac22f70c/IMDLBenCo/model_zoo/cat_net/cat_net.py#L30)，`forward`函数的形参列表需要有相应字段接收上述额外输入的信息。
+      - [`cat_net_post_function`的Github链接](https://github.com/scu-zjz/ForensicHub/blob/c2d6dc03eab3f33461690d5026b43afdac22f70c/ForensicHub/model_zoo/cat_net/cat_net_post_function.py#L7-L10)，可以看到包含额外的`DCT_coef`和`q_tables`两个字段为模型输入额外的模态
+      - [`cat_net_model`的Github链接](https://github.com/scu-zjz/ForensicHub/blob/c2d6dc03eab3f33461690d5026b43afdac22f70c/ForensicHub/model_zoo/cat_net/cat_net.py#L30)，`forward`函数的形参列表需要有相应字段接收上述额外输入的信息。
 - 第36行到第38行：所有的损失函数必须在`forward`函数中完成计算
 - 第45行到第70行：输出结果的字典。<span style="color: red;font-weight: bold;">非常重要！</span>，字典各字段的功能介绍如下：
   - |Key|含义|类型|
@@ -294,8 +294,8 @@ if __name__ == "__main__":
 ```json
 [
   [
-    "/mnt/data0/xiaochen/workspace/IMDLBenCo_pure/guide/Tp/CM/Sp_S_CND_A_pla0016_pla0016_0196.jpg",
-    "/mnt/data0/xiaochen/workspace/IMDLBenCo_pure/guide/CASIA 1.0 groundtruth/CM/Sp_S_CND_A_pla0016_pla0016_0196_gt.png"
+    "/mnt/data0/xiaochen/workspace/ForensicHub_pure/guide/Tp/CM/Sp_S_CND_A_pla0016_pla0016_0196.jpg",
+    "/mnt/data0/xiaochen/workspace/ForensicHub_pure/guide/CASIA 1.0 groundtruth/CM/Sp_S_CND_A_pla0016_pla0016_0196_gt.png"
   ],
    ......
 ]
@@ -303,7 +303,7 @@ if __name__ == "__main__":
 
 后续通过将这个json文件的绝对路径作为测试集参数写入shell即可，比如：
 ```shell
-/mnt/data0/xiaochen/workspace/IMDLBenCo_pure/guide/CASIAv1.json
+/mnt/data0/xiaochen/workspace/ForensicHub_pure/guide/CASIAv1.json
 ```
 
 特别的，如果你后续自己构建的数据集有真图，则自行写脚本构建JSON的时候，需要向真图的`mask`的路径写入`Negative`这个字符串。这样`Benco`会将这张图看做真图，对应纯黑的mask。比如加入上面这张图想看做真图使用的话，json应该这样组织：
@@ -311,7 +311,7 @@ if __name__ == "__main__":
 ```json
 [
   [
-    "/mnt/data0/xiaochen/workspace/IMDLBenCo_pure/guide/Tp/CM/Sp_S_CND_A_pla0016_pla0016_0196.jpg",
+    "/mnt/data0/xiaochen/workspace/ForensicHub_pure/guide/Tp/CM/Sp_S_CND_A_pla0016_pla0016_0196.jpg",
     "Negative"
   ],
    ......
@@ -327,7 +327,7 @@ if __name__ == "__main__":
 ```
 然后将920张篡改图像拷贝到`Tp`路径下，将920张mask拷贝到`Gt`路径下即可。后续通过将这个文件夹的路径作为测试集参数写入shell即可，比如：
 ```shell
-/mnt/data0/xiaochen/workspace/IMDLBenCo_pure/guide/CASIAv1
+/mnt/data0/xiaochen/workspace/ForensicHub_pure/guide/CASIAv1
 ```
 
 ### 在benco init下调整设计自己的模型。
@@ -336,7 +336,7 @@ if __name__ == "__main__":
 自定义自己的模型，要修改`mymodel.py`，我们先给出修改后的代码，然后对重要的部分加以介绍。
 
 ```python
-from IMDLBenCo.registry import MODELS
+from ForensicHub.registry import MODELS
 import torch.nn as nn
 import torch
 import torch.nn.functional as F
@@ -704,7 +704,7 @@ torchrun  \
     --model MyConvNeXt \
     --world_size 1 \
     --test_data_path "/mnt/data0/public_datasets/IML/CASIA1.0" \
-    --checkpoint_path "/mnt/data0/xiaochen/workspace/IMDLBenCo_pure/guide/benco/output_dir/checkpoint-92.pth" \
+    --checkpoint_path "/mnt/data0/xiaochen/workspace/ForensicHub_pure/guide/benco/output_dir/checkpoint-92.pth" \
     --test_batch_size 32 \
     --image_size 512 \
     --if_resizing \
@@ -724,7 +724,7 @@ torchrun  \
             JpegCompressionWrapper([50, 60, 70, 80, 90, 100])
     ]
 ```
-这些`wrapper`后面的列表代表具体攻击的强度，他们内部封装了[Albumentation](https://github.com/albumentations-team/albumentations)提供的Transform来实现攻击。`wrapper`本身的实现请参考此[链接](https://github.com/scu-zjz/IMDLBenCo/blob/main/IMDLBenCo/transforms/robustness_wrapper.py)。
+这些`wrapper`后面的列表代表具体攻击的强度，他们内部封装了[Albumentation](https://github.com/albumentations-team/albumentations)提供的Transform来实现攻击。`wrapper`本身的实现请参考此[链接](https://github.com/scu-zjz/ForensicHub/blob/main/ForensicHub/transforms/robustness_wrapper.py)。
 
 特别的，你可以在当前路径下参考源码中`wrapper`的实现封装新的自定义`wrapper`，然后像`from mymodel import MyConvNeXt`一样import你自己的wrapper到这里使用。这样无需修改源码，也能实现自定义灵活的鲁棒性测试。
 

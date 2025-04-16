@@ -5,7 +5,7 @@
 ## 对于普通用户
 如果你只希望用IMDL-BenCo复现论文，并构建自己的模型，则IMDL-BenCo的安装方式非常简单，目前通过PyPI进行了包管理，直接通过如下指令即可完成
 ```shell
-pip install imdlbenco
+pip install ForensicHub
 ```
 如果安装成功，在命令行中运行如下指令可以验证是否安装成功，并且自动检查是否有新版本。（本仓库处于迭代开发中，最好经常检查版本更新）
 
@@ -24,7 +24,7 @@ benco --version
 
 如果正常安装了最新版本，应该可以看到如下内容：
 ```
-IMDLBenCo codebase version: 0.1.21
+ForensicHub codebase version: 0.1.21
         Checking for updates...
         Local version:  0.1.21
         PyPI newest version:  0.1.21
@@ -38,7 +38,7 @@ You are using the latest version: 0.1.21.
 
 ```shell
 # 卸载已有的 IMDL-BenCo 库
-pip uninstall imdlbenco
+pip uninstall ForensicHub
 
 # 克隆 GitHub 上的 IMDL-BenCo 的fork过的仓库
 git clone https://github.com/your_name/IMDL-BenCo.git
@@ -50,7 +50,7 @@ cd IMDL-BenCo
 pip install -e .
 
 # 验证安装
-pip show imdlbenco
+pip show ForensicHub
 ```
 
 如果安装正常，执行`pip list`后应当看到
@@ -58,7 +58,7 @@ pip show imdlbenco
 Package                 Version            Editable project location
 ----------------------- ------------------ ------------------------------------------------------
 ...
-IMDLBenCo               0.1.10             /mnt/data0/xiaochen/workspace/IMDLBenCo_pure/IMDLBenCo
+ForensicHub               0.1.10             /mnt/data0/xiaochen/workspace/ForensicHub_pure/ForensicHub
 ...
 ```
 `Editable Project Location` 这一栏有对应的路径，即代表所有对于该路径下的python脚本修改可以直接生效于该Python环境内部，无需重新安装，非常便于调试。

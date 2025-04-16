@@ -1,7 +1,7 @@
 # 案例一：使用Model Zoo训练复现SoTA论文
 我们认为学习最快的方式就是“Learn by Doing”（边做边学），所以通过几个案例来帮助使用者快速上手。
 
-总的来说IMDL-BenCo通过类似`git`、`conda`这样的命令行调用方式帮助你快速完成图像篡改检测科研项目的开发。如果你学过vue等前端技术，那按照vue-cli来理解IMDLBenCo的设计范式会非常轻松。
+总的来说IMDL-BenCo通过类似`git`、`conda`这样的命令行调用方式帮助你快速完成图像篡改检测科研项目的开发。如果你学过vue等前端技术，那按照vue-cli来理解ForensicHub的设计范式会非常轻松。
 
 无论如何，请先参考[安装](./install.md)完成IMDL-BenCo的安装。
 
@@ -100,11 +100,11 @@ IMDL-BenCo只是提升开发效率的框架，为了尽可能提高面对科研�
 ## 通过shell传入nn.module的超参数（语法糖）
 
 此外，各个模型也会有自己的特殊的超参数，在BenCo中，shell脚本内部的“多余”（比如train.py内部不需要的命令行参数）命令行是可以直接传递到`nn.module`的`__init__`函数中的。
-该功能实现于[这里](https://github.com/scu-zjz/IMDLBenCo/blob/f4d158312b8f39df07aa41f468529c417bc9a765/IMDLBenCo/training_scripts/train.py#L133)
+该功能实现于[这里](https://github.com/scu-zjz/ForensicHub/blob/f4d158312b8f39df07aa41f468529c417bc9a765/ForensicHub/training_scripts/train.py#L133)
 
 所以暂时可以通过查看模型的`__init__()`函数来理解功能。
 
-以TruFor为例，我们可以看到模型的`nn.Module`的具体实现中，需要对`__init__`函数传入大量的形参以正确初始化模型，[该位置代码链接](https://github.com/scu-zjz/IMDLBenCo/blob/f4d158312b8f39df07aa41f468529c417bc9a765/IMDLBenCo/model_zoo/trufor/trufor.py#L15-L18)。
+以TruFor为例，我们可以看到模型的`nn.Module`的具体实现中，需要对`__init__`函数传入大量的形参以正确初始化模型，[该位置代码链接](https://github.com/scu-zjz/ForensicHub/blob/f4d158312b8f39df07aa41f468529c417bc9a765/ForensicHub/model_zoo/trufor/trufor.py#L15-L18)。
 ```python
 @MODELS.register_module()
 class Trufor(nn.Module):
@@ -118,10 +118,10 @@ class Trufor(nn.Module):
         super(Trufor, self).__init__()
 ```
 
-在BenCo框架中，我们可以通过向训练sh脚本`demo_train_trufor.sh`中传入同名字段并填入对应参数，即可正确初始化对应模型，[该位置链接](https://github.com/scu-zjz/IMDLBenCo/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/IMDLBenCo/statics/model_zoo/runs/demo_train_trufor.sh#L14-L18)：
+在BenCo框架中，我们可以通过向训练sh脚本`demo_train_trufor.sh`中传入同名字段并填入对应参数，即可正确初始化对应模型，[该位置链接](https://github.com/scu-zjz/ForensicHub/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/ForensicHub/statics/model_zoo/runs/demo_train_trufor.sh#L14-L18)：
 ```shell
-    --np_pretrain_weights "/mnt/data0/dubo/workspace/IMDLBenCo/IMDLBenCo/model_zoo/trufor/noiseprint.pth" \
-    --mit_b2_pretrain_weights "/mnt/data0/dubo/workspace/IMDLBenCo/IMDLBenCo/model_zoo/trufor/mit_b2.pth" \
+    --np_pretrain_weights "/mnt/data0/dubo/workspace/ForensicHub/ForensicHub/model_zoo/trufor/noiseprint.pth" \
+    --mit_b2_pretrain_weights "/mnt/data0/dubo/workspace/ForensicHub/ForensicHub/model_zoo/trufor/mit_b2.pth" \
     --config_path "./configs/trufor.yaml" \
     --phase 2 \
 ```
@@ -136,7 +136,7 @@ class Trufor(nn.Module):
 ## 预训练权重下载
 此外，不同的模型还会有自己的自定义参数，或者需要的预训练权重，这部分会在后续文档中补齐。TODO
 
-目前可以直接参考[此路径](https://github.com/scu-zjz/IMDLBenCo/tree/main/IMDLBenCo/model_zoo)下的各个模型的文件夹内的README，下载所需的预训练权重。
+目前可以直接参考[此路径](https://github.com/scu-zjz/ForensicHub/tree/main/ForensicHub/model_zoo)下的各个模型的文件夹内的README，下载所需的预训练权重。
 
 ## 运行Shell脚本
 切换到根目录（同级目录下有train.py，test.py等脚本），然后直接运行如下指令即可：

@@ -6,9 +6,9 @@
 If you only wish to use IMDL-BenCo to reproduce the paper and build your own model, the installation process is very simple. Currently, IMDL-BenCo is managed via PyPI, and you can complete the installation by running the following command:
 
 ```shell
-pip install imdlbenco
+pip install ForensicHub
 ```
-You can run the following command to check If the python package of IMDLBenCo is installed properly and check for the latest version. (This repository is under rapid development and will release new version offten.)
+You can run the following command to check If the python package of ForensicHub is installed properly and check for the latest version. (This repository is under rapid development and will release new version offten.)
 ::: tabs  
 @tab Abbreviated Command  
 ```shell  
@@ -21,7 +21,7 @@ benco --version
 :::
 If you have installed latest version, you will see the following content:
 ```
-IMDLBenCo codebase version: 0.1.21
+ForensicHub codebase version: 0.1.21
         Checking for updates...
         Local version:  0.1.21
         PyPI newest version:  0.1.21
@@ -35,7 +35,7 @@ If you are trying to develop new features for the **IMDL-BenCo Python Library** 
 
 ```shell
 # Uninstall any existing IMDL-BenCo library
-pip uninstall imdlbenco
+pip uninstall ForensicHub
 
 # Clone your forked IMDL-BenCo repository from GitHub
 git clone https://github.com/your_name/IMDL-BenCo.git
@@ -47,7 +47,7 @@ cd IMDL-BenCo
 pip install -e .
 
 # Verify the installation
-pip show imdlbenco
+pip show ForensicHub
 ```
 
 If the installation is successful, after executing `pip list`, you should see something like this:
@@ -56,7 +56,7 @@ If the installation is successful, after executing `pip list`, you should see so
 Package                 Version            Editable project location
 ----------------------- ------------------ ------------------------------------------------------
 ...
-IMDLBenCo               0.1.10             /mnt/data0/xiaochen/workspace/IMDLBenCo_pure/IMDLBenCo
+ForensicHub               0.1.10             /mnt/data0/xiaochen/workspace/ForensicHub_pure/ForensicHub
 ...
 ```
 

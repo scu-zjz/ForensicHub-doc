@@ -1,5 +1,5 @@
 {
     "api_key": "<your token>",
-    "target_dir": "D:\\workspace\\IMDLBenCo-doc\\docs",
+    "target_dir": "D:\\workspace\\ForensicHub-doc\\docs",
     "path_list": "markdown_paths.json"
 }

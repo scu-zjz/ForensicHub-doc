@@ -1,7 +1,7 @@
 # Case Three: Implementing Your Own Model with `benco init`
 We believe that the fastest way to learn is "Learn by Doing" (learning by doing), so we use several cases to help users get started quickly.
 
-Overall, IMDL-BenCo helps you quickly complete the development of image tampering detection scientific research projects through command line calls similar to `git` and `conda`. If you have learned front-end technologies such as vue, understanding the design pattern of IMDLBenCo according to vue-cli will be very easy.
+Overall, IMDL-BenCo helps you quickly complete the development of image tampering detection scientific research projects through command line calls similar to `git` and `conda`. If you have learned front-end technologies such as vue, understanding the design pattern of ForensicHub according to vue-cli will be very easy.
 
 Regardless, please refer to [Installation](./install.md) to complete the installation of IMDL-BenCo first.
 
@@ -31,7 +31,7 @@ After normal execution, you will see the following files generated under the cur
 .
 ├── balanced_dataset.json       # Stores the dataset path organized according to Protocol-CAT
 ├── mymodel.py                  # The core model implementation
-├── README-IMDLBenCo.md         # A simple readme
+├── README-ForensicHub.md         # A simple readme
 ├── test_datasets.json          # Stores the test dataset path
 ├── test_mymodel.sh             # The shell script for running tests with parameters
 ├── test.py                     # The actual Python code for the test script
@@ -42,17 +42,17 @@ After normal execution, you will see the following files generated under the cur
 ```
 
 ::: warning Special Attention
-If the scripts have been generated and some modifications have been made, please be very careful when calling `benco init` for the second time. IMDLBenCo will cover the files one by one after asking, and if you operate incorrectly, it may cause you to lose your existing modifications. Be careful. It is recommended to use git version control to avoid losing existing code due to this operation.
+If the scripts have been generated and some modifications have been made, please be very careful when calling `benco init` for the second time. ForensicHub will cover the files one by one after asking, and if you operate incorrectly, it may cause you to lose your existing modifications. Be careful. It is recommended to use git version control to avoid losing existing code due to this operation.
 :::
 
 
 ### Model File Design Pattern
-IMDLBenCo needs to organize the model files in a certain format to ensure that the entry can align with the `DataLoader` and the exit can align with the subsequent `Evaluator` and `Visualize tools`.
+ForensicHub needs to organize the model files in a certain format to ensure that the entry can align with the `DataLoader` and the exit can align with the subsequent `Evaluator` and `Visualize tools`.
 
-After executing `benco init`, a model with the simplest **single-layer convolution** is generated in `mymodel.py` by default. You can quickly view its content through the [Github link to mymodel.py](https://github.com/scu-zjz/IMDLBenCo/blob/main/IMDLBenCo/statics/base/mymodel.py).
+After executing `benco init`, a model with the simplest **single-layer convolution** is generated in `mymodel.py` by default. You can quickly view its content through the [Github link to mymodel.py](https://github.com/scu-zjz/ForensicHub/blob/main/ForensicHub/statics/base/mymodel.py).
 
 ```python
-from IMDLBenCo.registry import MODELS
+from ForensicHub.registry import MODELS
 import torch.nn as nn
 import torch
 
@@ -131,21 +131,21 @@ if __name__ == "__main__":
 ```
 
 
-**Introducing the design requirements of IMDLBenCo's model file from top to bottom:**
+**Introducing the design requirements of ForensicHub's model file from top to bottom:**
 - Line 5: `@MODELS.register_module()`
-  - Registers the model to IMDLBenCo's global registry based on the registration mechanism, making it easy for other scripts to quickly call the class through strings.
+  - Registers the model to ForensicHub's global registry based on the registration mechanism, making it easy for other scripts to quickly call the class through strings.
   - If you are not familiar with the registration mechanism, a one-sentence explanation is: **It automatically maintains a dictionary mapping from strings to corresponding class mappings**, making it easy to "freely" pass parameters.
-  - In actual use, by passing the registered "class name identical string" to the `--model` function of the shell script that starts training, the framework can load the corresponding custom or built-in model. For details, please refer to [this link](https://github.com/scu-zjz/IMDLBenCo/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/IMDLBenCo/statics/model_zoo/runs/demo_train_mvss.sh#L10).
+  - In actual use, by passing the registered "class name identical string" to the `--model` function of the shell script that starts training, the framework can load the corresponding custom or built-in model. For details, please refer to [this link](https://github.com/scu-zjz/ForensicHub/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/ForensicHub/statics/model_zoo/runs/demo_train_mvss.sh#L10).
 - Lines 29 and 37: **Loss functions must be defined in the `__init__()` or `forward()` functions**
 - Line 31: Defining the forward function `def forward(self, image, mask, label, *args, **kwargs):`
   - It is necessary to include `*args, **kwargs` required for Python function unpacking to receive unused parameters.
     - If you are not familiar with it, please refer to [Python Official Documentation-4.8.2. Keyword Arguments](https://docs.python.org/3/tutorial/controlflow.html#keyword-arguments), [Python Official Documentation Chinese Version-4.8.2 Keyword Arguments](https://docs.python.org/zh-cn/3/tutorial/controlflow.html#keyword-arguments)
-  - The parameter variable names must be exactly the same as the field names contained in the dictionary `data_dict` returned by [`abstract_dataset.py`](https://github.com/scu-zjz/IMDLBenCo/blob/main/IMDLBenCo/datasets/abstract_dataset.py). The default fields are shown in the table below:
+  - The parameter variable names must be exactly the same as the field names contained in the dictionary `data_dict` returned by [`abstract_dataset.py`](https://github.com/scu-zjz/ForensicHub/blob/main/ForensicHub/datasets/abstract_dataset.py). The default fields are shown in the table below:
     - |Key Name|Meaning|Type|
       |:-:|-|:-:|
       |image|Input original image|Tensor(B,3,H,W)|
       |mask|Mask of the prediction target|Tensor(B,1,H,W)|
-      |edge_mask|After [erosion (erosion) and dilation (dilation)](https://docs.opencv.org/3.4/db/df6/tutorial_erosion_dilatation.html) based on the mask, only the boundary is white, which is used for various models that need boundary loss functions. To reduce computational overhead, the corresponding dataloader will only return this key-value pair for the model's `forward()` function when the `--edge_mask_width 7` parameter is passed in the training `shell`, refer to the [shell](https://github.com/scu-zjz/IMDLBenCo/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/IMDLBenCo/statics/model_zoo/runs/demo_train_iml_vit.sh#L22) and [model forward function](https://github.com/scu-zjz/IMDLBenCo/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/IMDLBenCo/model_zoo/iml_vit/iml_vit.py#L125) of `IML-ViT`.<br>If you do not need the boundary mask to calculate subsequent losses, you do not need to pass it in the shell, nor do you need to prepare a parameter named `edge_mask` in the model's `forward()` function, refer to the [shell](https://github.com/scu-zjz/IMDLBenCo/blob/main/IMDLBenCo/statics/model_zoo/runs/demo_train_object_former.sh) and [model forward function](https://github.com/scu-zjz/IMDLBenCo/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/IMDLBenCo/model_zoo/object_former/object_former.py#L285) of `ObjectFormer`.|Tensor(B,1,H,W)|
+      |edge_mask|After [erosion (erosion) and dilation (dilation)](https://docs.opencv.org/3.4/db/df6/tutorial_erosion_dilatation.html) based on the mask, only the boundary is white, which is used for various models that need boundary loss functions. To reduce computational overhead, the corresponding dataloader will only return this key-value pair for the model's `forward()` function when the `--edge_mask_width 7` parameter is passed in the training `shell`, refer to the [shell](https://github.com/scu-zjz/ForensicHub/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/ForensicHub/statics/model_zoo/runs/demo_train_iml_vit.sh#L22) and [model forward function](https://github.com/scu-zjz/ForensicHub/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/ForensicHub/model_zoo/iml_vit/iml_vit.py#L125) of `IML-ViT`.<br>If you do not need the boundary mask to calculate subsequent losses, you do not need to pass it in the shell, nor do you need to prepare a parameter named `edge_mask` in the model's `forward()` function, refer to the [shell](https://github.com/scu-zjz/ForensicHub/blob/main/ForensicHub/statics/model_zoo/runs/demo_train_object_former.sh) and [model forward function](https://github.com/scu-zjz/ForensicHub/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/ForensicHub/model_zoo/object_former/object_former.py#L285) of `ObjectFormer`.|Tensor(B,1,H,W)|
       |label|Image-level prediction of zero-one labels|Tensor(B,1)|
       |shape|The shape of the image after padding or resizing|Tensor(B,2), two dimensions each with one value, representing H and W respectively|
       |original_shape|The shape of the image when it was first read|Tensor(B,2), two dimensions each with one value, representing H and W respectively|
@@ -153,8 +153,8 @@ if __name__ == "__main__":
       |shape_mask|In the case of padding, only the pixels inside this mask that are 1 are calculated as the final metric, 1 defaults to a square area the same size as the original image|Tensor(B,1,H,W)|
     - For different tasks, you can take these fields as needed and input them into the model for use.
     - In addition, for the Jpeg-related image materials needed by CAT-Net, we have designed the post-processing function `post_func` to generate more content based on the existing fields. At this time, it is also necessary to ensure that the corresponding forward function's fields are aligned. **Custom models with similar needs can also use this pattern to introduce other modal information in the dataloader.** The following is a case of CAT-Net:
-      - [Github link to `cat_net_post_function`](https://github.com/scu-zjz/IMDLBenCo/blob/c2d6dc03eab3f33461690d5026b43afdac22f70c/IMDLBenCo/model_zoo/cat_net/cat_net_post_function.py#L7-L10), you can see that it includes two additional fields `DCT_coef` and `q_tables` for the model to input additional modalities
-      - [Github link to `cat_net_model`](https://github.com/scu-zjz/IMDLBenCo/blob/c2d6dc03eab3f33461690d5026b43afdac22f70c/IMDLBenCo/model_zoo/cat_net/cat_net.py#L30), the `forward` function's parameter list needs to have corresponding fields to receive the above additional input information.
+      - [Github link to `cat_net_post_function`](https://github.com/scu-zjz/ForensicHub/blob/c2d6dc03eab3f33461690d5026b43afdac22f70c/ForensicHub/model_zoo/cat_net/cat_net_post_function.py#L7-L10), you can see that it includes two additional fields `DCT_coef` and `q_tables` for the model to input additional modalities
+      - [Github link to `cat_net_model`](https://github.com/scu-zjz/ForensicHub/blob/c2d6dc03eab3f33461690d5026b43afdac22f70c/ForensicHub/model_zoo/cat_net/cat_net.py#L30), the `forward` function's parameter list needs to have corresponding fields to receive the above additional input information.
 - Lines 36 to 38: All loss functions must be calculated in the `forward` function
 - Lines 45 to 70: The dictionary of output results. <span style="color: red;font-weight: bold;">Very important!</span>, the function of each field in the dictionary is introduced as follows:
   - |Key|Meaning|Type|
@@ -294,8 +294,8 @@ For example, I generated a `json` file like this:
 ```json
 [
   [
-    "/mnt/data0/xiaochen/workspace/IMDLBenCo_pure/guide/Tp/CM/Sp_S_CND_A_pla0016_pla0016_0196.jpg",
-    "/mnt/data0/xiaochen/workspace/IMDLBenCo_pure/guide/CASIA 1.0 groundtruth/CM/Sp_S_CND_A_pla0016_pla0016_0196_gt.png"
+    "/mnt/data0/xiaochen/workspace/ForensicHub_pure/guide/Tp/CM/Sp_S_CND_A_pla0016_pla0016_0196.jpg",
+    "/mnt/data0/xiaochen/workspace/ForensicHub_pure/guide/CASIA 1.0 groundtruth/CM/Sp_S_CND_A_pla0016_pla0016_0196_gt.png"
   ],
    ......
 ]
@@ -303,7 +303,7 @@ For example, I generated a `json` file like this:
 
 Subsequently, you can write the absolute path of this json file as the test set parameter in the shell, for example:
 ```shell
-/mnt/data0/xiaochen/workspace/IMDLBenCo_pure/guide/CASIAv1.json
+/mnt/data0/xiaochen/workspace/ForensicHub_pure/guide/CASIAv1.json
 ```
 
 Note that, if you build your own dataset with real images later, you need to write the path of the `mask` for real images as the string `Negative` when building the JSON script. This way, `Benco` will treat this image as a real image with a pure black mask. For example, if you want to use the above image as a real image, the json should be organized like this:
@@ -311,7 +311,7 @@ Note that, if you build your own dataset with real images later, you need to wri
 ```json
 [
   [
-    "/mnt/data0/xiaochen/workspace/IMDLBenCo_pure/guide/Tp/CM/Sp_S_CND_A_pla0016_pla0016_0196.jpg",
+    "/mnt/data0/xiaochen/workspace/ForensicHub_pure/guide/Tp/CM/Sp_S_CND_A_pla0016_pla0016_0196.jpg",
     "Negative"
   ],
    ......
@@ -327,7 +327,7 @@ Very simple, find a clean path to store the dataset and create a folder named `C
 ```
 Then copy the 920 tampered images to the `Tp` path and copy the 920 masks to the `Gt` path. Subsequently, you can write the path of this folder as the test set parameter in the shell, for example:
 ```shell
-/mnt/data0/xiaochen/workspace/IMDLBenCo_pure/guide/CASIAv1
+/mnt/data0/xiaochen/workspace/ForensicHub_pure/guide/CASIAv1
 ```
 
 ### Adjusting the Design of Your Own Model under benco init
@@ -336,7 +336,7 @@ First, we need to execute `benco init` to generate all the required files and sc
 To customize your own model, you need to modify `mymodel.py`. We will first provide the modified code and then introduce the important parts.
 
 ```python
-from IMDLBenCo.registry import MODELS
+from ForensicHub.registry import MODELS
 import torch.nn as nn
 import torch
 import torch.nn.functional as F
@@ -700,7 +700,7 @@ torchrun  \
     --model MyConvNeXt \
     --world_size 1 \
     --test_data_path "/mnt/data0/public_datasets/IML/CASIA1.0" \
-    --checkpoint_path "/mnt/data0/xiaochen/workspace/IMDLBenCo_pure/guide/benco/output_dir/checkpoint-92.pth" \
+    --checkpoint_path "/mnt/data0/xiaochen/workspace/ForensicHub_pure/guide/benco/output_dir/checkpoint-92.pth" \
     --test_batch_size 32 \
     --image_size 512 \
     --if_resizing \
@@ -720,7 +720,7 @@ The specific adjustment of attack strategies and intensities in robustness testi
             JpegCompressionWrapper([50, 60, 70, 80, 90, 100])
     ]
 ```
-The lists behind these `wrapper` represent the specific strengths of the attacks, and they internally encapsulate the Transform provided by [Albumentation](https://github.com/albumentations-team/albumentations) to implement the attack. The implementation of the `wrapper` itself, please refer to this [link](https://github.com/scu-zjz/IMDLBenCo/blob/main/IMDLBenCo/transforms/robustness_wrapper.py).
+The lists behind these `wrapper` represent the specific strengths of the attacks, and they internally encapsulate the Transform provided by [Albumentation](https://github.com/albumentations-team/albumentations) to implement the attack. The implementation of the `wrapper` itself, please refer to this [link](https://github.com/scu-zjz/ForensicHub/blob/main/ForensicHub/transforms/robustness_wrapper.py).
 
 In particular, you can refer to the implementation of the `wrapper` in the current path to encapsulate a new custom `wrapper`, and then import your own wrapper here like `from mymodel import MyConvNeXt`. This way, you can achieve a custom flexible robustness test without modifying the source code.
 

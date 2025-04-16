@@ -143,7 +143,7 @@ torchrun  \
     --model MyConvNeXt \
     --world_size 1 \
     --test_data_path "/mnt/data0/public_datasets/IML/CASIA1.0" \
-    --checkpoint_path "/mnt/data0/xiaochen/workspace/IMDLBenCo_pure/guide/benco/output_dir/checkpoint-92.pth" \
+    --checkpoint_path "/mnt/data0/xiaochen/workspace/ForensicHub_pure/guide/benco/output_dir/checkpoint-92.pth" \
     --test_batch_size 32 \
     --image_size 512 \
     --if_resizing \
@@ -163,7 +163,7 @@ The specific adjustment of attack strategies and intensities in robustness testi
             JpegCompressionWrapper([50, 60, 70, 80, 90, 100])
     ]
 ```
-The lists behind these `wrapper` represent the specific strengths of the attacks, and they internally encapsulate the Transform provided by [Albumentation](https://github.com/albumentations-team/albumentations) to implement the attack. The implementation of the `wrapper` itself, please refer to this [link](https://github.com/scu-zjz/IMDLBenCo/blob/main/IMDLBenCo/transforms/robustness_wrapper.py).
+The lists behind these `wrapper` represent the specific strengths of the attacks, and they internally encapsulate the Transform provided by [Albumentation](https://github.com/albumentations-team/albumentations) to implement the attack. The implementation of the `wrapper` itself, please refer to this [link](https://github.com/scu-zjz/ForensicHub/blob/main/ForensicHub/transforms/robustness_wrapper.py).
 
 In particular, you can refer to the implementation of the `wrapper` in the current path to encapsulate a new custom `wrapper`, and then import your own wrapper here like `from mymodel import MyConvNeXt`. This way, you can achieve a custom flexible robustness test without modifying the source code.
 

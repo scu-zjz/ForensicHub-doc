@@ -1,7 +1,7 @@
 # Case One: Reproduce SoTA Papers by Training with Model Zoo
 We believe that the fastest way to learn is "Learn by Doing" (learning by doing), so we will help users get started quickly through several cases.
 
-Overall, IMDL-BenCo helps you quickly complete the development of image tampering detection scientific research projects through command line calls similar to `git` and `conda`. If you have learned front-end technologies like vue, understanding the design pattern of IMDLBenCo according to vue-cli will be very easy.
+Overall, IMDL-BenCo helps you quickly complete the development of image tampering detection scientific research projects through command line calls similar to `git` and `conda`. If you have learned front-end technologies like vue, understanding the design pattern of ForensicHub according to vue-cli will be very easy.
 
 Anyway, please refer to [Installation](./install.md) to complete the installation of IMDL-BenCo first.
 
@@ -100,11 +100,11 @@ Necessary PyTorch multi-card training parameter adjustments, please solve by lea
 ## Pass nn.module Hyperparameters through Shell (Syntax Sugar)
 
 In addition, each model will also have its own special hyperparameters. In BenCo, the "extra" (for example, command line arguments that are not needed inside train.py) command line arguments in the shell script can be directly passed to the `__init__` function of `nn.module`.
-This feature is implemented [here](https://github.com/scu-zjz/IMDLBenCo/blob/f4d158312b8f39df07aa41f468529c417bc9a765/IMDLBenCo/training_scripts/train.py#L133)
+This feature is implemented [here](https://github.com/scu-zjz/ForensicHub/blob/f4d158312b8f39df07aa41f468529c417bc9a765/ForensicHub/training_scripts/train.py#L133)
 
 So for now, you can understand the function by looking at the model's `__init__()` function.
 
-Taking TruFor as an example, we can see that a large number of formal parameters need to be passed to the `__init__` function to correctly initialize the model in the specific implementation of the model's `nn.Module`, [code link here](https://github.com/scu-zjz/IMDLBenCo/blob/f4d158312b8f39df07aa41f468529c417bc9a765/IMDLBenCo/model_zoo/trufor/trufor.py#L15-L18).
+Taking TruFor as an example, we can see that a large number of formal parameters need to be passed to the `__init__` function to correctly initialize the model in the specific implementation of the model's `nn.Module`, [code link here](https://github.com/scu-zjz/ForensicHub/blob/f4d158312b8f39df07aa41f468529c417bc9a765/ForensicHub/model_zoo/trufor/trufor.py#L15-L18).
 ```python
 @MODELS.register_module()
 class Trufor(nn.Module):
@@ -118,10 +118,10 @@ class Trufor(nn.Module):
         super(Trufor, self).__init__()
 ```
 
-In the BenCo framework, we can correctly initialize the corresponding model by passing the same field names and corresponding parameters into the training sh script `demo_train_trufor.sh`, [link here](https://github.com/scu-zjz/IMDLBenCo/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/IMDLBenCo/statics/model_zoo/runs/demo_train_trufor.sh#L14-L18):
+In the BenCo framework, we can correctly initialize the corresponding model by passing the same field names and corresponding parameters into the training sh script `demo_train_trufor.sh`, [link here](https://github.com/scu-zjz/ForensicHub/blob/4c6a2937c3cae8d6ff26bf85e9bad0c5ec467468/ForensicHub/statics/model_zoo/runs/demo_train_trufor.sh#L14-L18):
 ```shell
-    --np_pretrain_weights "/mnt/data0/dubo/workspace/IMDLBenCo/IMDLBenCo/model_zoo/trufor/noiseprint.pth" \
-    --mit_b2_pretrain_weights "/mnt/data0/dubo/workspace/IMDLBenCo/IMDLBenCo/model_zoo/trufor/mit_b2.pth" \
+    --np_pretrain_weights "/mnt/data0/dubo/workspace/ForensicHub/ForensicHub/model_zoo/trufor/noiseprint.pth" \
+    --mit_b2_pretrain_weights "/mnt/data0/dubo/workspace/ForensicHub/ForensicHub/model_zoo/trufor/mit_b2.pth" \
     --config_path "./configs/trufor.yaml" \
     --phase 2 \
 ```
@@ -136,7 +136,7 @@ In the BenCo framework, we can correctly initialize the corresponding model by p
 ## Pre-trained Weights Download
 In addition, different models will also have their own custom parameters or required pre-trained weights. This part will be supplemented in subsequent documents. TODO
 
-Currently, you can directly refer to the README in each model folder under [this path](https://github.com/scu-zjz/IMDLBenCo/tree/main/IMDLBenCo/model_zoo) to download the required pre-trained weights.
+Currently, you can directly refer to the README in each model folder under [this path](https://github.com/scu-zjz/ForensicHub/tree/main/ForensicHub/model_zoo) to download the required pre-trained weights.
 
 ## Run Shell Script
 Switch to the root directory (the same level directory has train.py, test.py and other scripts), and then directly run the following command:

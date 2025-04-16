@@ -95,7 +95,7 @@
 ## 对于高分辨率图片的预处理
 有一些数据集本身有很高的分辨率，比如NIST16和CAT-Protocol中的compRAISE数据集都含有4000x4000的图片。这些数据集如果在训练时直接读取会带来极高的I/O负担。尤其是作为训练数据集时。
 
-所以我们尤其建议使用这些数据集时提前将图片resize到小尺寸，比如保持长宽比的情况下缩小到长边等于1024。否则训练速度可能会被极大拖慢，请参考[IMDL-BenCo issue #40](https://github.com/scu-zjz/IMDLBenCo/issues/40)。
+所以我们尤其建议使用这些数据集时提前将图片resize到小尺寸，比如保持长宽比的情况下缩小到长边等于1024。否则训练速度可能会被极大拖慢，请参考[IMDL-BenCo issue #40](https://github.com/scu-zjz/ForensicHub/issues/40)。
 
 我们这里提供一个基于线程池的Resize代码，可以高效地通过多线程将一个路径下的所有图片转换为期望的分辨率：
 ```python

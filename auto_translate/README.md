@@ -144,7 +144,7 @@ python collect_md_paths.py --source ./docs --output markdown_paths.json
 ```
 
 ```bash
-python collect_md_paths.py --source D:\workspace\IMDLBenCo-doc\docs\zh --output markdown_paths.json
+python collect_md_paths.py --source D:\workspace\ForensicHub-doc\docs\zh --output markdown_paths.json
 ```
 
 3. 手动编辑生成的`markdown_paths.json`，删除不需要翻译的文件路径
@@ -156,7 +156,7 @@ python collect_md_paths.py --source D:\workspace\IMDLBenCo-doc\docs\zh --output 
     "target_dir": "./translated",
     "path_list": "filtered_paths.json"
 }
-    // "target_dir": "D:\\workspace\\IMDLBenCo-doc\\docs",
+    // "target_dir": "D:\\workspace\\ForensicHub-doc\\docs",
 ```
 
 5. 第三步执行翻译：

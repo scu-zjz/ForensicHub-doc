@@ -1,6 +1,6 @@
 # Introduction
 ## Overview
-IMDLBenCo is a modular deep learning toolkit designed for image manipulation detection and localization (IMDL) tasks based on the [PyTorch](https://pytorch.org/) framework. It can be used for:
+ForensicHub is a modular deep learning toolkit designed for image manipulation detection and localization (IMDL) tasks based on the [PyTorch](https://pytorch.org/) framework. It can be used for:
 - Reproducing state-of-the-art (SoTA) models in IMDL
 - Creating your own IMDL models
 - Comparing the performance of various visual backbones and IMDL feature extractors in bulk

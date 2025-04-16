@@ -4,7 +4,7 @@
 
 The overview of the IMDL-BenCo framework design is shown below:
 
-![IMDL-BenCo Overview](/images/IMDLBenCo_overview.png)
+![IMDL-BenCo Overview](/images/ForensicHub_overview.png)
 
 The main components include:
 - `Dataloader` for data loading and preprocessing

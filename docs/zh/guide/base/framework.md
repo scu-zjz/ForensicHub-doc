@@ -2,7 +2,7 @@
 ## 概览
 IMDL-BenCo代码框架的设计概览图如下所示：
 
-![](/images/IMDLBenCo_overview.png)
+![](/images/ForensicHub_overview.png)
 
 主要的组件包含：
 - 负责引入数据并进行预处理的`Dataloader`

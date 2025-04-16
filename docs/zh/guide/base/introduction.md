@@ -1,6 +1,6 @@
 # 简介
 ## 概览
-IMDLBenCo 是一个模块化的，针对图像篡改检测和定位任务设计的深度学习工具包，基于的[PyTorch](https://pytorch.org/)框架设计。可以用于：
+ForensicHub 是一个模块化的，针对图像篡改检测和定位任务设计的深度学习工具包，基于的[PyTorch](https://pytorch.org/)框架设计。可以用于：
 - 复现篡改检测领域SoTA模型
 - 创建自己的篡改检测模型
 - 批量比较多种视觉Backbone和篡改检测特征提取器的性能

@@ -17,32 +17,32 @@ import {
 } from './configs/index.js'
 
 export default defineUserConfig({
-  base: '/IMDLBenCo-doc/',
+  base: '/ForensicHub-doc/',
 
   head,
 
   locales: {
     '/': {
       lang: 'en-US',
-      title: 'IMDLBenCo Documentation',
+      title: 'ForensicHub Documentation',
       description: 'Benchmark and Codebase for Image manipulation localization & detection',
     },
     // '/en/': {
     //   lang: 'en-US',
-    //   title: 'IMDLBenCo Documentation',
+    //   title: 'ForensicHub Documentation',
     //   description: 'Benchmark and Codebase for Image manipulation localization & detection',
     // },
     '/zh/': {
       lang: 'zh-CN',
-      title: 'IMDLBenCo 文档',
+      title: 'ForensicHub 文档',
       description: '图像篡改检测与定位基准代码库',
     },
   },
 
   theme: defaultTheme({
     logo: '/images/IMDL_BenCo.png',
-    repo: 'scu-zjz/IMDLBenCo',
-    docsRepo: 'scu-zjz/IMDLBenCo-doc',
+    repo: 'scu-zjz/ForensicHub',
+    docsRepo: 'scu-zjz/ForensicHub-doc',
     // docsRepo: 'vuepress/docs',
     docsDir: 'docs',
 
@@ -148,7 +148,7 @@ export default defineUserConfig({
       // 选项 https://blog.csdn.net/qq_33806001/article/details/126255433
       // https://ecosystem.vuejs.press/zh/plugins/blog/comment/giscus/#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C
       provider: 'Giscus',
-      repo: 'scu-zjz/IMDLBenCo-doc',
+      repo: 'scu-zjz/ForensicHub-doc',
       repoId: "R_kgDOMJdYLw",
       category: 'Announcements',
       categoryId: "DIC_kwDOMJdYL84CovVT",
@@ -157,7 +157,7 @@ export default defineUserConfig({
     seoPlugin({
       // 选项
       // https://ecosystem.vuejs.press/zh/plugins/seo/seo/guide.html#%E5%BC%80%E7%AE%B1%E5%8D%B3%E7%94%A8
-      hostname: "https://scu-zjz.github.io/IMDLBenCo-doc/"
+      hostname: "https://scu-zjz.github.io/ForensicHub-doc/"
     }),
     googleAnalyticsPlugin({
       // 配置项

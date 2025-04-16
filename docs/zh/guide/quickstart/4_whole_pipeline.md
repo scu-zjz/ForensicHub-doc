@@ -147,7 +147,7 @@ torchrun  \
     --model MyConvNeXt \
     --world_size 1 \
     --test_data_path "/mnt/data0/public_datasets/IML/CASIA1.0" \
-    --checkpoint_path "/mnt/data0/xiaochen/workspace/IMDLBenCo_pure/guide/benco/output_dir/checkpoint-92.pth" \
+    --checkpoint_path "/mnt/data0/xiaochen/workspace/ForensicHub_pure/guide/benco/output_dir/checkpoint-92.pth" \
     --test_batch_size 32 \
     --image_size 512 \
     --if_resizing \
@@ -167,7 +167,7 @@ torchrun  \
             JpegCompressionWrapper([50, 60, 70, 80, 90, 100])
     ]
 ```
-这些`wrapper`后面的列表代表具体攻击的强度，他们内部封装了[Albumentation](https://github.com/albumentations-team/albumentations)提供的Transform来实现攻击。`wrapper`本身的实现请参考此[链接](https://github.com/scu-zjz/IMDLBenCo/blob/main/IMDLBenCo/transforms/robustness_wrapper.py)。
+这些`wrapper`后面的列表代表具体攻击的强度，他们内部封装了[Albumentation](https://github.com/albumentations-team/albumentations)提供的Transform来实现攻击。`wrapper`本身的实现请参考此[链接](https://github.com/scu-zjz/ForensicHub/blob/main/ForensicHub/transforms/robustness_wrapper.py)。
 
 特别的，你可以在当前路径下参考源码中`wrapper`的实现封装新的自定义`wrapper`，然后像`from mymodel import MyConvNeXt`一样import你自己的wrapper到这里使用。这样无需修改源码，也能实现自定义灵活的鲁棒性测试。
 

@@ -28,7 +28,7 @@ footer: CC-BY-4.0 Licensed | Copyright © Colledge of Computer Science, Sichuan 
 
 ## One line install
 ```shell
-pip install imdlbenco
+pip install ForensicHub
 ```
 
 For further information, please see [guide](/guide/quickstart/install.md).

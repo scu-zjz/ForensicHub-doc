@@ -2,7 +2,7 @@
 
 We believe that the fastest way to learn is "Learn by Doing," so we provide several cases to help users get started quickly.
 
-Overall, IMDL-BenCo helps you quickly complete the development of image tampering detection research projects through command-line calls similar to `git` and `conda`. If you have learned front-end technologies like vue, understanding the design pattern of IMDLBenCo according to vue-cli will be very easy.
+Overall, IMDL-BenCo helps you quickly complete the development of image tampering detection research projects through command-line calls similar to `git` and `conda`. If you have learned front-end technologies like vue, understanding the design pattern of ForensicHub according to vue-cli will be very easy.
 
 Regardless, please refer to [Installation](./install.md) to complete the installation of IMDL-BenCo first.
 
@@ -13,7 +13,7 @@ This chapter provides checkpoints used in most of the experiments in the [IMDL-B
 ## Checkpoint Links
 We have made some model weights used in our reported metrics in the paper publicly available on Baidu Netdisk for reference. According to the model name and the dataset used during training, the download link on Baidu Netdisk is as follows:
 
-- Baidu Netdisk: imdlbenco_ckpt
+- Baidu Netdisk: ForensicHub_ckpt
   - Link: [https://pan.baidu.com/s/1DtkOwLCTunvI3d_GAAj2Dg?pwd=bchm](https://pan.baidu.com/s/1DtkOwLCTunvI3d_GAAj2Dg?pwd=bchm) ,
   - Extraction Code: bchm
 
@@ -31,7 +31,7 @@ Since the checkpoint-xx.pth obtained from `train.py` needs to save model weights
 To save space on the netdisk, the checkpoint released in this work only retains the "model" field and discards the rest of the fields for upload. However, it does not affect normal reproduction and Evaluation. As shown below.
 ```python
 ckpt_name = "iml_vit_casiav2.pth"
-path_ckpt = "/mnt/data0/public_datasets/IML/IMDLBenCo_ckpt"
+path_ckpt = "/mnt/data0/public_datasets/IML/ForensicHub_ckpt"
 
 import torch
 import os
