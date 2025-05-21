@@ -1,3 +1,4 @@
+// @ts-ignore
 import type { NavbarConfig } from '@vuepress/theme-default'
 import { version } from '../meta.js'
 
@@ -26,32 +27,32 @@ export const navbarEn: NavbarConfig = [
         ],
     },
 
-    {
-        text: 'API Reference',
-        children: [
-            "/API/intro.md",
-        ],
-    },
-    {
-        text: 'IMDL data & model hub',
-
-        children: [
-            {
-                text: 'Datasets',
-                children: [
-                    "/imdl_data_model_hub/data/IMDLdatasets.md",
-                    "/imdl_data_model_hub/data/AIGCdatasets.md"
-                ],
-            },
-            {
-                text: 'Models & Papers',
-                children: [
-                    "/imdl_data_model_hub/models/benco.md",
-                    "/imdl_data_model_hub/models/general.md"
-                ],
-            }
-        ]
-    }
+    // {
+    //     text: 'API Reference',
+    //     children: [
+    //         "/API/intro.md",
+    //     ],
+    // },
+    // {
+    //     text: 'IMDL data & model hub',
+    //
+    //     children: [
+    //         {
+    //             text: 'Datasets',
+    //             children: [
+    //                 "/imdl_data_model_hub/data/IMDLdatasets.md",
+    //                 "/imdl_data_model_hub/data/AIGCdatasets.md"
+    //             ],
+    //         },
+    //         {
+    //             text: 'Models & Papers',
+    //             children: [
+    //                 "/imdl_data_model_hub/models/benco.md",
+    //                 "/imdl_data_model_hub/models/general.md"
+    //             ],
+    //         }
+    //     ]
+    // }
     // {
     //     text: 'Models & modules',
 

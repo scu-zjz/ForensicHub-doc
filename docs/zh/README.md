@@ -1,10 +1,10 @@
 ---
 home: true
 title: Home
-heroImage: images/IMDL_BenCo.png
+heroImage: images/logo.jpg
 actions:
   - text: 开始体验
-    link: /zh/guide/quickstart/install.md
+    link: /zh/guide/quickstart/0_install.md
     type: primary
 
   - text: 简介
@@ -12,21 +12,26 @@ actions:
     type: secondary
 
 features:
-  - title: 模块化设计
-    details: 基于面向对象封装，辅以少量回调函数和注册机制，便于调用和二次开发。
-  - title: 面向研究的
-    details: 针对篡改检测科研的特点设计的框架。包含丰富的篡改检测预处理，高度自定义的模型和损失函数设计，高效的GPU加速评价指标计算等功能。
-  - title: 用户友好的
-    details: 基于PyPI安装和命令行调用，分离训练脚本与基础框架源码，可以方便地在不改源码的情况下定制你自己的工作流程，易于上手。
+  - title: 全任务兼容
+    details: 支持Deepfake、IMDL、AIGC和Document四大图像取证任务，涵盖图像级检测与像素级定位，真正实现任务统一与领域融合。
+  - title: 自由组合Pipeline
+    details: 通过模块化架构将数据集、预处理、模型与评估器解耦，用户可基于YAML配置自由组合构建跨任务训练与评估流程。
+  - title: 标准化与可扩展兼具
+    details: 提供统一接口与协议，适配已有基准（如DeepfakeBench与IMDLBenCo），同时支持自定义数据集、模型与指标扩展，兼顾工程复现与科研探索。
+
 
 
 footer: CC-BY-4.0 协议 | 版权所有 © 四川大学计算机学院
 ---
-**重要！目前的文档和教程并不完善，这是个需要很多劳动力的任务，我们会尽最大可能快速完成。**
 
-## 一行代码，轻松安装
-```shell
-pip install ForensicHub
-```
+[//]: # (**重要！目前的文档和教程并不完善，这是个需要很多劳动力的任务，我们会尽最大可能快速完成。**)
 
-获取更多详情，请查阅[指南](/guide/quickstart/install.md).
+[//]: # (## 一行代码，轻松安装)
+
+[//]: # (```shell)
+
+[//]: # (pip install ForensicHub)
+
+[//]: # (```)
+
+获取更多详情，请查阅[指南](/zh/guide/quickstart/install.md).

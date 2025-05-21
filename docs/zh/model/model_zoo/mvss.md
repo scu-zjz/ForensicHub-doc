@@ -1,2 +1,0 @@
-# MVSS-Net
-TODO

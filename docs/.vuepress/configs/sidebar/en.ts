@@ -1,3 +1,4 @@
+// @ts-ignore
 import type { SidebarConfig } from '@vuepress/theme-default'
 
 export const sidebarEn: SidebarConfig = {
@@ -43,79 +44,79 @@ export const sidebarEn: SidebarConfig = {
             ],
         },
     ],
-    '/API/': [
-        {
-            text: 'Data Related',
-            children: [
-                '/advanced/architecture.md',
-                '/advanced/plugin.md',
-                '/advanced/theme.md',
-            ],
-        },
-        {
-            text: 'Cookbook',
-            children: [
-                '/advanced/cookbook/README.md',
-                '/advanced/cookbook/usage-of-client-config.md',
-                '/advanced/cookbook/adding-extra-pages.md',
-                '/advanced/cookbook/making-a-theme-extendable.md',
-                '/advanced/cookbook/passing-data-to-client-code.md',
-                '/advanced/cookbook/markdown-and-vue-sfc.md',
-                '/advanced/cookbook/resolving-routes.md',
-            ],
-        },
-    ],
-    '/model/': [
-        {
-            text: 'Model Zoo',
-            collapsible: true,
-            children: [
-                '/model/model_zoo/intro&content.md',
-                '/model/model_zoo/mvss.md',
-                '/model/model_zoo/trufor.md',
-                '/model/model_zoo/iml_vit.md'
-            ],
-        },
-        {
-            text: 'Bundler Tools',
-            children: [
-                '/reference/bundler/vite.md',
-                '/reference/bundler/webpack.md',
-            ],
-        },
-        {
-            text: 'Ecosystem',
-            children: [
-                {
-                    text: 'Default Theme',
-                    link: 'https://ecosystem.vuejs.press/themes/default/',
-                },
-                {
-                    text: 'Plugins',
-                    link: 'https://ecosystem.vuejs.press/plugins/',
-                },
-            ],
-        },
-    ],
-    '/imdl_data_model_hub/': [
-        {
-            text: 'IMDL Data \& Model hub',
-            children: [
-                {
-                    text: 'Datasets',
-                    children: [
-                        "/imdl_data_model_hub/data/IMDLdatasets.md",
-                        "/imdl_data_model_hub/data/AIGCdatasets.md"
-                    ],
-                },
-                {
-                    text: 'Models & Papers',
-                    children: [
-                        "/imdl_data_model_hub/models/benco.md",
-                        "/imdl_data_model_hub/models/general.md"
-                    ],
-                }
-            ],
-        },
-    ]
+    // '/API/': [
+    //     {
+    //         text: 'Data Related',
+    //         children: [
+    //             '/advanced/architecture.md',
+    //             '/advanced/plugin.md',
+    //             '/advanced/theme.md',
+    //         ],
+    //     },
+    //     {
+    //         text: 'Cookbook',
+    //         children: [
+    //             '/advanced/cookbook/README.md',
+    //             '/advanced/cookbook/usage-of-client-config.md',
+    //             '/advanced/cookbook/adding-extra-pages.md',
+    //             '/advanced/cookbook/making-a-theme-extendable.md',
+    //             '/advanced/cookbook/passing-data-to-client-code.md',
+    //             '/advanced/cookbook/markdown-and-vue-sfc.md',
+    //             '/advanced/cookbook/resolving-routes.md',
+    //         ],
+    //     },
+    // ],
+    // '/model/': [
+    //     {
+    //         text: 'Model Zoo',
+    //         collapsible: true,
+    //         children: [
+    //             '/model/model_zoo/intro&content.md',
+    //             '/model/model_zoo/mvss.md',
+    //             '/model/model_zoo/trufor.md',
+    //             '/model/model_zoo/iml_vit.md'
+    //         ],
+    //     },
+    //     {
+    //         text: 'Bundler Tools',
+    //         children: [
+    //             '/reference/bundler/vite.md',
+    //             '/reference/bundler/webpack.md',
+    //         ],
+    //     },
+    //     {
+    //         text: 'Ecosystem',
+    //         children: [
+    //             {
+    //                 text: 'Default Theme',
+    //                 link: 'https://ecosystem.vuejs.press/themes/default/',
+    //             },
+    //             {
+    //                 text: 'Plugins',
+    //                 link: 'https://ecosystem.vuejs.press/plugins/',
+    //             },
+    //         ],
+    //     },
+    // ],
+    // '/imdl_data_model_hub/': [
+    //     {
+    //         text: 'IMDL Data \& Model hub',
+    //         children: [
+    //             {
+    //                 text: 'Datasets',
+    //                 children: [
+    //                     "/imdl_data_model_hub/data/IMDLdatasets.md",
+    //                     "/imdl_data_model_hub/data/AIGCdatasets.md"
+    //                 ],
+    //             },
+    //             {
+    //                 text: 'Models & Papers',
+    //                 children: [
+    //                     "/imdl_data_model_hub/models/benco.md",
+    //                     "/imdl_data_model_hub/models/general.md"
+    //                 ],
+    //             }
+    //         ],
+    //     },
+    // ]
 }

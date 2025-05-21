@@ -25,7 +25,7 @@ export default defineUserConfig({
     '/': {
       lang: 'en-US',
       title: 'ForensicHub Documentation',
-      description: 'Benchmark and Codebase for Image manipulation localization & detection',
+      description: 'Unified Benchmark and Codebase for Fake Image Detection and Localization',
     },
     // '/en/': {
     //   lang: 'en-US',
@@ -35,12 +35,12 @@ export default defineUserConfig({
     '/zh/': {
       lang: 'zh-CN',
       title: 'ForensicHub 文档',
-      description: '图像篡改检测与定位基准代码库',
+      description: '虚假图像检测和定位的统一基准和代码库',
     },
   },
 
   theme: defaultTheme({
-    logo: '/images/IMDL_BenCo.png',
+    logo: '/images/logo.jpg',
     repo: 'scu-zjz/ForensicHub',
     docsRepo: 'scu-zjz/ForensicHub-doc',
     // docsRepo: 'vuepress/docs',
