@@ -1,6 +1,12 @@
 {
-  "source_dir": "D:\\workspace\\ForensicHub-doc\\docs\\zh",
+  "source_dir": "../docs/zh",
   "files": [
-    "guide\\quickstart\\4_whole_pipeline.md"
+    "get-started.md",
+    "README.md",
+    "guide\\base\\framework.md",
+    "guide\\base\\introduction.md",
+    "guide\\quickstart\\0_install.md",
+    "guide\\quickstart\\1_register.md",
+    "guide\\quickstart\\2_yaml.md"
   ]
 }

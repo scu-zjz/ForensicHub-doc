@@ -16,11 +16,9 @@ export const navbarEn: NavbarConfig = [
             {
                 text: 'Quick Start',
                 children: [
-                    "/guide/quickstart/install.md",
-                    "/guide/quickstart/0_dataprepare.md",
-                    "/guide/quickstart/1_model_zoo.md",
-                    "/guide/quickstart/2_load_ckpt.md",
-                    "/guide/quickstart/3_demo.md"
+                    "/guide/quickstart/0_install.md",
+                    "/guide/quickstart/1_register.md",
+                    "/guide/quickstart/2_yaml.md",
                     
                 ],
             },

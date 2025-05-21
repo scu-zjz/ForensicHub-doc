@@ -24,11 +24,9 @@ export const sidebarEn: SidebarConfig = {
         {
             text: 'Quick Start',
             children: [
-                '/guide/quickstart/install.md',
-                "/guide/quickstart/0_dataprepare.md",
-                "/guide/quickstart/1_model_zoo.md",
-                "/guide/quickstart/2_load_ckpt.md",
-                "/guide/quickstart/3_demo.md",
+                '/guide/quickstart/0_install.md',
+                "/guide/quickstart/1_register.md",
+                "/guide/quickstart/2_yaml.md",
                 // '/guide/getting-started.md',
                 // '/guide/configuration.md',
                 // '/guide/page.md',
