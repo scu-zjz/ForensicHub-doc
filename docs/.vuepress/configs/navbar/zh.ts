@@ -30,6 +30,24 @@ export const navbarZh: NavbarConfig = [
         ],
     },
 
+    {
+        text: '汇总',
+        children: [
+            {
+                text: '模型',
+                children: [
+                    "/zh/summary/model.md",
+                ]
+            },
+            {
+                text: '指标',
+                children: [
+                    "/zh/summary/evaluator.md",
+                ]
+            }
+        ]
+    }
+
     // {
     //     text: 'API文档',
     //     children: [

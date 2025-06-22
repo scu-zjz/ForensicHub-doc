@@ -49,6 +49,22 @@ export const sidebarZh: SidebarConfig = {
             ],
         },
     ],
+
+    '/zh/summary/': [
+        {
+            text: '模型',
+            children: [
+                "/zh/summary/model.md",
+            ],
+        },
+        {
+            text: '指标',
+            children: [
+                "/zh/summary/evaluator.md"
+            ],
+        },
+    ],
+
     // '/zh/API/': [
     //     {
     //         text: '数据相关',
