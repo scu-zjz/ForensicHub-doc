@@ -1,12 +1,9 @@
 {
   "source_dir": "../docs/zh",
   "files": [
-    "get-started.md",
-    "README.md",
-    "guide\\base\\framework.md",
-    "guide\\base\\introduction.md",
     "guide\\quickstart\\0_install.md",
-    "guide\\quickstart\\1_register.md",
-    "guide\\quickstart\\2_yaml.md"
+    "guide\\quickstart\\2_yaml.md",
+    "summary\\evaluator.md",
+    "summary\\model.md"
   ]
 }
