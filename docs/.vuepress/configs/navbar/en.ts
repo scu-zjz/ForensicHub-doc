@@ -19,11 +19,30 @@ export const navbarEn: NavbarConfig = [
                     "/guide/quickstart/0_install.md",
                     "/guide/quickstart/1_register.md",
                     "/guide/quickstart/2_yaml.md",
-                    
+                    "/guide/quickstart/3_data_preparation.md",
+                    "/guide/quickstart/4_Running&Evaluation.md",
                 ],
             },
         ],
     },
+
+    {
+        text: 'Summary',
+        children: [
+            {
+                text: 'Model',
+                children: [
+                    "/summary/model.md",
+                ]
+            },
+            {
+                text: 'Metric',
+                children: [
+                    "/summary/evaluator.md",
+                ]
+            }
+        ]
+    }
 
     // {
     //     text: 'API Reference',

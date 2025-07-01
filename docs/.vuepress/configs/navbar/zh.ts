@@ -20,6 +20,8 @@ export const navbarZh: NavbarConfig = [
                     "/zh/guide/quickstart/0_install.md",
                     "/zh/guide/quickstart/1_register.md",
                     "/zh/guide/quickstart/2_yaml.md",
+                    "/zh/guide/quickstart/3_data_preparation.md",
+                    "/zh/guide/quickstart/4_Running&Evaluation.md",
                     // "/zh/guide/quickstart/0_dataprepare.md",
                     // "/zh/guide/quickstart/1_model_zoo.md",
                     // "/zh/guide/quickstart/2_load_ckpt.md",
