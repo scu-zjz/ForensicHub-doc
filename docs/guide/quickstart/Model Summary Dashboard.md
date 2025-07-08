@@ -2,10 +2,6 @@
 
 ---
 
-## Model Summary
-...
-
-
 ## Overall Leaderboard
 
 |   Rank | Model                | Domain   |   Celeb-DF-v2_test |   Cocoglide |   OSTF_test |   GenImage_ADM |   GenImage_Midjourney |   DiffusionForensics_test |   GenImage_wukong |   Tampered-IC13_test |   IMD2020 |   FaceForensics++c40 |   DFDCP_test |   Autosplice |   FF-DF_test |   DeepFakeDetection_test |   GenImage_glide |   GenImage_BigGAN |   NIST16 |   Celeb-DF-v1_test |   FF-F2F_test |   FF-NT_test |   FF-FS_test |   GenImage_sd15 |   GenImage_VQDM |   T-SROIE_test |   RealTextManipulation_test |   FaceShifter_test |   Columbia |   COVERAGE |   GenImage_sd14 |   GenImage_all |   DFDC_test |   UADFV_test |   Average |
