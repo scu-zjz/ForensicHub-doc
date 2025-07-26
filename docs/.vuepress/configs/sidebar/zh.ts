@@ -65,6 +65,12 @@ export const sidebarZh: SidebarConfig = {
                 "/zh/summary/evaluator.md"
             ],
         },
+        {
+            text: 'Rank榜单',
+            children: [
+                "/zh/summary/iff_rank.md"
+            ],
+        },
     ],
 
     // '/zh/API/': [

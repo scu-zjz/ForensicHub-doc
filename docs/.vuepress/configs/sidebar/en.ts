@@ -58,6 +58,12 @@ export const sidebarEn: SidebarConfig = {
                 "/summary/evaluator.md"
             ],
         },
+        {
+            text: 'Rank',
+            children: [
+                "/summary/iff_rank.md"
+            ],
+        },
     ],
 
 

@@ -40,6 +40,12 @@ export const navbarEn: NavbarConfig = [
                 children: [
                     "/summary/evaluator.md",
                 ]
+            },
+            {
+                text: 'Rank',
+                children: [
+                    "/summary/iff_rank.md",
+                ]
             }
         ]
     }

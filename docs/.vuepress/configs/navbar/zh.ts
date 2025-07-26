@@ -46,6 +46,12 @@ export const navbarZh: NavbarConfig = [
                 children: [
                     "/zh/summary/evaluator.md",
                 ]
+            },
+            {
+                text: 'Rank榜单',
+                children: [
+                    "/zh/summary/iff_rank.md",
+                ]
             }
         ]
     }
