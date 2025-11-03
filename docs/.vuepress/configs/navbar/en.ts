@@ -1,8 +1,12 @@
 // @ts-ignore
-import type { NavbarConfig } from '@vuepress/theme-default'
-import { version } from '../meta.js'
+import type {NavbarConfig} from '@vuepress/theme-default'
+import {version} from '../meta.js'
 
 export const navbarEn: NavbarConfig = [
+    {
+        text: 'Leaderboard',
+        link: '/rank/fidl_rank.md',
+    },
     {
         text: 'Guide',
         children: [

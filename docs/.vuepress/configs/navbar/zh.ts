@@ -5,6 +5,10 @@ import { version } from '../meta.js'
 
 export const navbarZh: NavbarConfig = [
     {
+        text: '排行榜',
+        link: '/zh/rank/fidl_rank.md',
+    },
+    {
         text: '指南',
         children: [
             {

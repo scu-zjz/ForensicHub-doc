@@ -19,7 +19,7 @@ features:
   - title: Standardization and Scalability
     details: Provides unified interfaces and protocols, adapts to existing benchmarks (such as DeepfakeBench and IMDLBenCo), and supports the extension of custom datasets, models, and metrics, balancing engineering reproduction and scientific exploration.
 
-footer: CC-BY-4.0 License | Copyright © 2023 School of Computer Science, Sichuan University
+footer: CC-BY-4.0 License | Copyright © 2025 School of Computer Science, Sichuan University
 ---
 
 [//]: # (**Important! The current documentation and tutorials are not complete; this is a task that requires a lot of manpower, and we will do our best to complete it as quickly as possible.**)

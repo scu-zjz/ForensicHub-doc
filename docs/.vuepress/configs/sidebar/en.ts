@@ -61,7 +61,7 @@ export const sidebarEn: SidebarConfig = {
         {
             text: 'Rank',
             children: [
-                "/summary/iff_rank.md"
+                "/summary/fidl_rank.md"
             ],
         },
     ],
