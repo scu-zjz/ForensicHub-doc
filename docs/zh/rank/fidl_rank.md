@@ -14,20 +14,21 @@
 - **Deepfake 检测**：FF++， [DF40](https://github.com/YZY-stack/DF40?tab=readme-ov-file)
 - **图像篡改检测与定位（IMDL）**： [IMD2020](https://pan.baidu.com/s/1Pw4paAn-zAmmtR1bxfi_dQ?pwd=keza)， [Autosplice](https://drive.google.com/drive/folders/1QpBm4528ng877ytdBiRSnrH-rsrCeoIA?usp=drive_link)
 - **AI 生成内容检测（AIGC）**： [DiffusionForensics](https://github.com/ZhendongWang6/DIRE)， [Chameleon](https://drive.google.com/file/d/1QLYJMhy0CbBVT01BLkkw7KPPL5BpmxnH/view)
-- **文档篡改检测与定位（Document）**： [Doctamper, T-SROIE](https://pan.baidu.com/s/1nHoP4dZGsFfdwdL6qxSvXA?pwd=sxun)
+- **文档篡改检测与定位（Document）**： [RealTextManipulation, T-SROIE](https://pan.baidu.com/s/1nHoP4dZGsFfdwdL6qxSvXA?pwd=sxun)
 
 ---
 
 <div align="center">
 
-| 🏆 排名 | 模型 | Deepfake 🖼️ | IMDL 📝 | AIGC 🤖 | 文档 📄 | 平均 ⭐ |
+| 🏆 Rank | Model | Deepfake 🖼️ | IMDL 📝 | AIGC 🤖 | Doc 📄 | Avg ⭐ |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| 🥇 1 | Effort | 0.614 | 0.587 | 0.410 | 0.704 | 0.579 |
-| 🥈 2 | UnivFD | 0.534 | 0.486 | 0.463 | 0.699 | 0.545 |
-| 🥉 3 | ConvNeXT | 0.662 | 0.704 | 0.337 | 0.466 | 0.542 |
-| 4 | Mesorch | 0.541 | 0.562 | 0.460 | 0.567 | 0.532 |
-| 5 | IML-ViT | 0.581 | 0.562 | 0.325 | 0.612 | 0.520 |
-| 6 | Segformer-b3 | 0.596 | 0.567 | 0.342 | 0.334 | 0.460 |
+| 🥇 1 | Effort | 0.614 | 0.587 | 0.410 | 0.788 | 0.600 |
+| 🥈 2 | Clip-ViT-L/14 | 0.664 | 0.543 | 0.317 | 0.724 | 0.562 |
+| 🥉 3 | UnivFD | 0.534 | 0.486 | 0.463 | 0.734 | 0.554 |
+| 4 | ConvNeXT | 0.662 | 0.704 | 0.337 | 0.479 | 0.545 |
+| 5 | Mesorch | 0.541 | 0.562 | 0.460 | 0.591 | 0.538 |
+| 6 | IML-ViT | 0.581 | 0.562 | 0.325 | 0.626 | 0.523 |
+| 7 | Segformer-b3 | 0.596 | 0.567 | 0.342 | 0.417 | 0.480 |
 |   ...   |
 
 </div>
@@ -47,28 +48,49 @@
         "deepfake": {"DF40_CollabDiff": 0.7686, "DF40_deepfacelab": 0.4292, "DF40_heygen": 0.7061, "FF++c40": 0.5506},
         "imdl": {"IMD2020": 0.5704, "Autosplice": 0.6035},
         "aigc": {"Chameleon": 0.4898, "DiffusionForensics": 0.3304},
-        "doc": {"Doctamper": 0.4745, "T-SROIE": 0.9326}
+        "doc": {"RealTextManipulation": 0.6439, "T-SROIE": 0.9326}
     },
     {
         "model": "Segformer-b3",
         "deepfake": {"DF40_CollabDiff": 0.7953, "DF40_deepfacelab": 0.5563, "DF40_heygen": 0.5496, "FF++c40": 0.4813},
         "imdl": {"IMD2020": 0.5185, "Autosplice": 0.6157},
         "aigc": {"Chameleon": 0.4344, "DiffusionForensics": 0.2502},
-        "doc": {"Doctamper": 0.4049, "T-SROIE": 0.2638}
+        "doc": {"RealTextManipulation": 0.5695, "T-SROIE": 0.2638}
     },
     {
         "model": "ConvNeXT",
         "deepfake": {"DF40_CollabDiff": 0.9572, "DF40_deepfacelab": 0.6103, "DF40_heygen": 0.5281, "FF++c40": 0.5512},
         "imdl": {"IMD2020": 0.8138, "Autosplice": 0.5945},
         "aigc": {"Chameleon": 0.3944, "DiffusionForensics": 0.2794},
-        "doc": {"Doctamper": 0.4977, "T-SROIE": 0.4343}
+        "doc": {"RealTextManipulation": 0.5235, "T-SROIE": 0.4343}
     },
     {
         "model": "UnivFD",
         "deepfake": {"DF40_CollabDiff": 0.7458, "DF40_deepfacelab": 0.3962, "FF++c40": 0.4610},
         "imdl": {"IMD2020": 0.4887, "Autosplice": 0.4831},
         "aigc": {"Chameleon": 0.5727, "DiffusionForensics": 0.3537},
-        "doc": {"Doctamper": 0.4834, "T-SROIE": 0.9136}
+        "doc": {"RealTextManipulation": 0.5554, "T-SROIE": 0.9136}
+    },
+    {
+        "model": "IML-ViT",
+        "deepfake": {"DF40_CollabDiff": 0.9783, "DF40_deepfacelab": 0.2938, "DF40_heygen": 0.6297, "FF++c40": 0.4224},
+        "imdl": {"IMD2020": 0.5229, "Autosplice": 0.6008},
+        "aigc": {"Chameleon": 0.3707, "DiffusionForensics": 0.2799},
+        "doc": {"RealTextManipulation": 0.5307, "T-SROIE": 0.7207}
+    },
+    {
+        "model": "Mesorch",
+        "deepfake": {"DF40_CollabDiff": 0.7139, "DF40_deepfacelab": 0.3324, "DF40_heygen": 0.6478, "FF++c40": 0.4699},
+        "imdl": {"IMD2020": 0.5331, "Autosplice": 0.5905},
+        "aigc": {"Chameleon": 0.3991, "DiffusionForensics": 0.5214},
+        "doc": {"RealTextManipulation": 0.522, "T-SROIE": 0.6599}
+    },
+    {
+        "model": "Clip-ViT-L/14",
+        "deepfake": {"DF40_CollabDiff": 0.999, "DF40_deepfacelab": 0.352, "DF40_heygen": 0.8067, "FF++c40": 0.4984},
+        "imdl": {"IMD2020": 0.5567, "Autosplice": 0.5295},
+        "aigc": {"Chameleon": 0.3371, "DiffusionForensics": 0.2962},
+        "doc": {"RealTextManipulation": 0.5836, "T-SROIE": 0.8651}
     }
 ]
 ```
