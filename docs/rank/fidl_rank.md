@@ -32,12 +32,12 @@ The datasets used for evaluation are listed below:
 | 🏆 Rank | Model | Deepfake 🖼️ | IMDL 📝 | AIGC 🤖 | Doc 📄 | Avg ⭐ |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | 🥇 1 | Effort | 0.614 | 0.587 | 0.410 | 0.788 | 0.600 |
-| 🥈 2 | Clip-ViT-L/14 | 0.664 | 0.543 | 0.317 | 0.724 | 0.562 |
-| 🥉 3 | UnivFD | 0.534 | 0.486 | 0.463 | 0.734 | 0.554 |
-| 4 | ConvNeXT | 0.662 | 0.704 | 0.337 | 0.479 | 0.545 |
+| 🥈 2 | Segformer-b3 | 0.629 | 0.576 | 0.339 | 0.724 | 0.567 |
+| 🥉 3 | Clip-ViT-L/14 | 0.664 | 0.543 | 0.317 | 0.724 | 0.562 |
+| 4 | ConvNeXT | 0.662 | 0.573 | 0.337 | 0.669 | 0.560 |
 | 5 | Mesorch | 0.541 | 0.562 | 0.460 | 0.591 | 0.538 |
-| 6 | IML-ViT | 0.581 | 0.562 | 0.325 | 0.626 | 0.523 |
-| 7 | Segformer-b3 | 0.596 | 0.567 | 0.342 | 0.417 | 0.480 |
+| 6 | UnivFD | 0.442 | 0.486 | 0.463 | 0.734 | 0.531 |
+| 7 | IML-ViT | 0.581 | 0.562 | 0.325 | 0.626 | 0.523 |
 |   ...   |
 
 </div>
@@ -61,21 +61,21 @@ More hyperparameter settings can be found in the [ForensicHub](https://github.co
     },
     {
         "model": "Segformer-b3",
-        "deepfake": {"DF40_CollabDiff": 0.7953, "DF40_deepfacelab": 0.5563, "DF40_heygen": 0.5496, "FF++c40": 0.4813},
-        "imdl": {"IMD2020": 0.5185, "Autosplice": 0.6157},
-        "aigc": {"Chameleon": 0.4344, "DiffusionForensics": 0.2502},
-        "doc": {"RealTextManipulation": 0.5695, "T-SROIE": 0.2638}
+        "deepfake": {"DF40_CollabDiff": 0.8503, "DF40_deepfacelab": 0.5125, "DF40_heygen": 0.685, "FF++c40": 0.4677},
+        "imdl": {"IMD2020": 0.543, "Autosplice": 0.6098},
+        "aigc": {"Chameleon": 0.411, "DiffusionForensics": 0.2676},
+        "doc": {"RealTextManipulation": 0.5695, "T-SROIE": 0.8795}
     },
     {
         "model": "ConvNeXT",
         "deepfake": {"DF40_CollabDiff": 0.9572, "DF40_deepfacelab": 0.6103, "DF40_heygen": 0.5281, "FF++c40": 0.5512},
-        "imdl": {"IMD2020": 0.8138, "Autosplice": 0.5945},
+        "imdl": {"IMD2020": 0.5512, "Autosplice": 0.5945},
         "aigc": {"Chameleon": 0.3944, "DiffusionForensics": 0.2794},
-        "doc": {"RealTextManipulation": 0.5235, "T-SROIE": 0.4343}
+        "doc": {"RealTextManipulation": 0.5235, "T-SROIE": 0.8138}
     },
     {
         "model": "UnivFD",
-        "deepfake": {"DF40_CollabDiff": 0.7458, "DF40_deepfacelab": 0.3962, "FF++c40": 0.4610},
+        "deepfake": {"DF40_CollabDiff": 0.7458, "DF40_deepfacelab": 0.3962, "DF40_heygen": 0.1665, "FF++c40": 0.4610},
         "imdl": {"IMD2020": 0.4887, "Autosplice": 0.4831},
         "aigc": {"Chameleon": 0.5727, "DiffusionForensics": 0.3537},
         "doc": {"RealTextManipulation": 0.5554, "T-SROIE": 0.9136}
@@ -100,7 +100,7 @@ More hyperparameter settings can be found in the [ForensicHub](https://github.co
         "imdl": {"IMD2020": 0.5567, "Autosplice": 0.5295},
         "aigc": {"Chameleon": 0.3371, "DiffusionForensics": 0.2962},
         "doc": {"RealTextManipulation": 0.5836, "T-SROIE": 0.8651}
-    }
+    },
 ]
 
 ```
